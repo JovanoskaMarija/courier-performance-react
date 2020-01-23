@@ -200,41 +200,38 @@ class Summary extends React.Component {
           label: "First Dataset",
           data: a.arrayOfRatios,
           fill: false,
-          // backgroundColor: "#42A5F5",
           borderColor: "#0e566d"
         }
       ]
     };
 
     return (
-
-//       <div>
-// <Chart type="pie" data={dataPieChart} width="80%" height="80%" />
-//       </div>
       <SummaryStyle>
         <p className="header">Summary page</p>
         <div className="container">
-            <Chart type="pie" data={dataPieChart} width="70%" height="40%" />
+          <Chart type="pie" data={dataPieChart} width="70%" height="40%" />
           <div className="card">
             <p className="description">
-              This is the summary for informations displayed in the table. The pie
-              chart is showing the top 10 couriers with the highest number of
-              delivered parcels with enclosing month and eleventh piece of the
-              pie represents total delivered parcels of all remaining couriers.
+              This is the summary for informations displayed in the table. The
+              pie chart is showing the top 10 couriers with the highest number
+              of delivered parcels with enclosing month and eleventh piece of
+              the pie represents total delivered parcels of all remaining
+              couriers.
             </p>
           </div>
         </div>
 
         <div className="container" style={{ marginTop: "5%" }}>
-            <Chart type="line" data={dataLineGraph} width="70%" height="35%" />
-  
+          <Chart type="line" data={dataLineGraph} width="70%" height="35%" />
           <div className="card">
             <p className="description">
               The table below shows which courier has the lowest delivered
               parcels to expected parcels for delivery ratio, meaning who was
               most effective one.
             </p>
-            <p className="description">For this month , most effective courier is:</p>
+            <p className="description">
+              For this month , most effective courier is:
+            </p>
             <p className="courier">{a.ime}</p>
           </div>
         </div>
