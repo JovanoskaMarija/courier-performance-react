@@ -1,14 +1,12 @@
 import React from "react";
 import { Chart } from "primereact/chart";
+import { DetailsStyle } from "../style/DetailsStyle";
 
 class Details extends React.Component {
   constructor() {
     super();
     this.state = {
-      courierPerformance: {},
-      labels: [],
-      data1: [],
-      data2: []
+      courierPerformance: {}
     };
   }
   componentDidMount = () => {
@@ -20,7 +18,7 @@ class Details extends React.Component {
     fetch("http://api-dev.els.mk/statistics/courierperformance", {
       method: "post",
       headers: {
-        Authorization: "Bearer 3d0e56ed00e1025ba50835972fac229056701477",
+        Authorization: "Bearer b43361c03d09c05ffd50b6b66b1935b26f88cf33",
         Accept: "application/json",
         "Content-Type": "application/json"
       },
@@ -48,7 +46,6 @@ class Details extends React.Component {
     return total;
   };
 
-
   render() {
     let localData1 = [];
     let localData2 = [];
@@ -61,28 +58,27 @@ class Details extends React.Component {
     }
     let sortedTempArray = [...localData1].sort((a, b) => b - a);
     let shortTempArray = sortedTempArray.slice(0, 3);
-    
 
     let obj = {};
 
-    for(let j = 0; j<localData1.length; j++){
-      for(let i = 0; i<shortTempArray.length; i++) {
-        if(shortTempArray[i] === localData1[j]) {
-          obj[localData1.indexOf(localData1[j])] = localData1[j]
+    for (let j = 0; j < localData1.length; j++) {
+      for (let i = 0; i < shortTempArray.length; i++) {
+        if (shortTempArray[i] === localData1[j]) {
+          obj[localData1.indexOf(localData1[j])] = localData1[j];
         }
       }
     }
-    for(let key in obj) {
-      localData2[key] = obj[key]
-    } 
-    
+    for (let key in obj) {
+      localData2[key] = obj[key];
+    }
+
     const data = {
       labels: Object.keys(this.state.courierPerformance),
       datasets: [
         {
           type: "line",
-          label: "Total Delivered parcels per day",
-          borderColor: "#2196F3",
+          label: "Total delivered parcels per day",
+          borderColor: "#0e566d",
           borderWidth: 2,
           fill: false,
           data: localData1
@@ -90,7 +86,7 @@ class Details extends React.Component {
         {
           type: "bar",
           label: "Top 3",
-          backgroundColor: "#4CAF50",
+          backgroundColor: "#6c98ac",
           data: localData2,
           borderColor: "white",
           borderWidth: 2
@@ -101,45 +97,100 @@ class Details extends React.Component {
       responsive: true,
       title: {
         display: true,
-        text: "Combo Bar Line Chart"
+        text: "Total delivered parcels"
       },
       tooltips: {
         mode: "index",
         intersect: true
       }
     };
+    let singleSelectedCourier = {};
+    this.props.couriers.data.map(courier => {
+      if (this.props.selectedCourier == courier.id) {
+        singleSelectedCourier.ime = courier.ime + " " + courier.prezime;
+        singleSelectedCourier.mesto = courier.mesto_ime;
+        singleSelectedCourier.kontact = courier.kontakt;
+      }
+    });
 
+    console.log(singleSelectedCourier);
     return (
-      <div>
-        <p>Details Page</p>
-        <p>{this.props.selectedCourier}</p>
-        <p>{this.props.date_from}</p>
-        <p>{this.props.date_to}</p>
-        <p>Total colected parcels: {this.sum("collected_parcels")} </p>
-        <p>Total delivered parcels: {this.sum("delivered_parcels")} </p>
-        <p>
-          Total cash amount from collected parcels:{" "}
-          {this.sum("cash_amount_from_collected_parcels")}{" "}
-        </p>
-        <p>
-          Total cash amount from delivered parcels:{" "}
-          {this.sum("cash_amount_from_delivered_parcels")}{" "}
-        </p>
-        <p>
-          Total invoiced amount from collected parcels:{" "}
-          {this.sum("invoice_amount_from_collected_parcels")}{" "}
-        </p>
-        <p>
-          Total invoiced amount from delivered parcels:{" "}
-          {this.sum("invoice_amount_from_delivered_parcels")}{" "}
-        </p>
-        <p>
-          Total charged amount:{" "}
-          {this.sum("total_cash_amount") + this.sum("total_invoice_amount")}
-        </p>
+      <DetailsStyle>
+        <p className="header">Summarize the information for the courier:</p>
+        <div className="container">
+          <div className="card">
+            <div className="card-description">
+              <p>
+                Name: <span className="data">{singleSelectedCourier.ime}</span>,
+                with ID:{" "}
+                <span className="data">{this.props.selectedCourier}</span>
+              </p>
+              <p>
+                City:{" "}
+                <span className="data"> {singleSelectedCourier.mesto}</span>
+              </p>
+              <p>
+                for the period between: {" "}
+                <span className="data">{this.props.date_from}</span> -{" "}
+                <span className="data">{this.props.date_to}</span>
+              </p>
+            </div>
+          </div>
+          <div className="card">
+            <div className="card-description">
+              <p>
+                Total colected parcels:{" "}
+                <span className="data">{this.sum("collected_parcels")}</span>{" "}
+              </p>
+              <p>
+                Total delivered parcels:{" "}
+                <span className="data">{this.sum("delivered_parcels")}</span>{" "}
+              </p>
+              <p>
+                Total cash amount from collected parcels:{" "}
+                <span className="data">
+                  {this.sum("cash_amount_from_collected_parcels").toFixed(2)} den
+                </span>{" "}
+              </p>
+              <p>
+                Total cash amount from delivered parcels:{" "}
+                <span className="data">
+                  {this.sum("cash_amount_from_delivered_parcels").toFixed(2)} den
+                </span>{" "}
+              </p>
+              <p>
+                Total invoiced amount from collected parcels:{" "}
+                <span className="data">
+                  {this.sum("invoice_amount_from_collected_parcels").toFixed(2)} den
+                </span>{" "}
+              </p>
+              <p>
+                Total invoiced amount from delivered parcels:{" "}
+                <span className="data">
+                  {this.sum("invoice_amount_from_delivered_parcels").toFixed(2)} den
+                </span>{" "}
+              </p>
+              <p>
+                Total charged amount:{" "}
+                <span className="data">
+                  {(
+                    this.sum("total_cash_amount") +
+                    this.sum("total_invoice_amount") 
+                  ).toFixed(2)} den
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <Chart
+          type="bar"
+          data={data}
+          options={options}
+          width="80%"
+          height="40%"
+        />
 
-        <Chart type="bar" data={data} options={options} />
-      </div>
+      </DetailsStyle>
     );
   }
 }
