@@ -1,5 +1,6 @@
 import React from "react";
 import { Chart } from "primereact/chart";
+import { SummaryStyle } from "../style/SummaryStyle";
 
 class Summary extends React.Component {
   constructor() {
@@ -9,9 +10,9 @@ class Summary extends React.Component {
 
   dateForPieChart = () => {
     let krajna = [];
-    let result = {}
-    let arrayOfNames = []
-    let arrayOfTotals = []
+    let result = {};
+    let arrayOfNames = [];
+    let arrayOfTotals = [];
     for (let i = 0; i < 10; i++) {
       krajna.push(this.props.listTotalDelParcels[i]);
     }
@@ -34,10 +35,10 @@ class Summary extends React.Component {
       arrayOfTotals.push(krajna[i].total);
     }
 
-    result["arrayOfNames"] = arrayOfNames
-    result["arrayOfTotals"] = arrayOfTotals
-    return result
-  }
+    result["arrayOfNames"] = arrayOfNames;
+    result["arrayOfTotals"] = arrayOfTotals;
+    return result;
+  };
 
   getKeyByValue = (object, value) => {
     let array = [];
@@ -152,18 +153,44 @@ class Summary extends React.Component {
   };
 
   render() {
-    let c = this.dateForPieChart()
-    const dataPieChart= {
+    let c = this.dateForPieChart();
+    const dataPieChart = {
       labels: c.arrayOfNames,
       datasets: [
         {
           data: c.arrayOfTotals,
-          backgroundColor: [ "#FF6633", "#FFB399", "#FF33FF", "#FFFF99", "#00B3E6", "#E6B333", "#3366E6", "#999966", "#99FF99", "#B34D4D", "#80B300" ],
-          hoverBackgroundColor: ["#FF6633", "#FFB399", "#FF33FF", "#FFFF99", "#00B3E6", "#E6B333", "#3366E6", "#999966",  "#99FF99", "#B34D4D", "#80B300" ]
+          backgroundColor: [
+            "#dae4ea",
+            "#b5cad5",
+            "#91b1c0",
+            "#6c98ac",
+            "#448098",
+            "#306174",
+            "#006884",
+            "#365562",
+            "#0e566d",
+            "#134557",
+            "#143541"
+          ],
+          hoverBackgroundColor: [
+            "#dae4ea",
+            "#b5cad5",
+            "#91b1c0",
+            "#6c98ac",
+            "#448098",
+            "#306174",
+            "#006884",
+            "#365562",
+            "#0e566d",
+            "#134557",
+            "#143541"
+          ]
         }
       ]
+    };
+    {
+      this.funkcija();
     }
-    {this.funkcija()}
     let a = this.dataForGraph();
 
     const dataLineGraph = {
@@ -173,20 +200,45 @@ class Summary extends React.Component {
           label: "First Dataset",
           data: a.arrayOfRatios,
           fill: false,
-          backgroundColor: "#42A5F5",
-          borderColor: "#42A5F5"
+          // backgroundColor: "#42A5F5",
+          borderColor: "#0e566d"
         }
       ]
     };
 
     return (
-      <div>
-        <p>Ssummart page</p>
-        <Chart type="pie" data={dataPieChart} />
 
-        {a.ime}
-        <Chart type="line" data={dataLineGraph}  />
-      </div>
+//       <div>
+// <Chart type="pie" data={dataPieChart} width="80%" height="80%" />
+//       </div>
+      <SummaryStyle>
+        <p className="header">Summary page</p>
+        <div className="container">
+            <Chart type="pie" data={dataPieChart} width="70%" height="40%" />
+          <div className="card">
+            <p className="description">
+              This is the summary for informations displayed in the table. The pie
+              chart is showing the top 10 couriers with the highest number of
+              delivered parcels with enclosing month and eleventh piece of the
+              pie represents total delivered parcels of all remaining couriers.
+            </p>
+          </div>
+        </div>
+
+        <div className="container" style={{ marginTop: "5%" }}>
+            <Chart type="line" data={dataLineGraph} width="70%" height="35%" />
+  
+          <div className="card">
+            <p className="description">
+              The table below shows which courier has the lowest delivered
+              parcels to expected parcels for delivery ratio, meaning who was
+              most effective one.
+            </p>
+            <p className="description">For this month , most effective courier is:</p>
+            <p className="courier">{a.ime}</p>
+          </div>
+        </div>
+      </SummaryStyle>
     );
   }
 }
