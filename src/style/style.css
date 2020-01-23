@@ -1,0 +1,70 @@
+.p-inputtext {
+  width: 280px;
+}
+
+body .p-datatable .p-sortable-column.p-highlight {
+  background-color: #006884;
+}
+
+body .p-datatable .p-datatable-thead > tr > th {
+  padding: 0.571em 0.857em;
+  /* border: 1px solid #006884; */
+  border: 1px solid  #d7e5e9;
+  font-weight: 700;
+  color: #053d57;
+  background-color: #d7e5e9;
+  /* text-align: center;  */
+}
+
+body .p-datatable .p-datatable-tbody > tr.p-highlight {
+  color: #d7e5e9;
+  background-color: #053d57;
+}
+
+body .p-datatable .p-datatable-tbody > tr:nth-child(even) {
+  background-color: white;
+}
+body .p-datatable .p-datatable-tbody > tr:nth-child(even).p-highlight {
+  background-color: #053d57;
+  color: #d7e5e9;
+}
+
+body .p-paginator {
+  background-color: #d7e5e9;
+  border: 1px solid #d7e5e9;
+  padding: 0;
+}
+body .p-paginator .p-paginator-pages .p-paginator-page {
+    /* background-color: #053d57; */
+    color: #006884;
+  }
+body .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background-color:  #006884;
+  color: #ffffff;
+}
+body .p-dialog .p-dialog-content {
+    border-radius: 0 0 10px 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #053d57;
+}
+body .p-dialog .p-dialog-titlebar {
+    border: 1px solid #d7e5e9;
+    border-radius: 10px 10px 0 0 ;
+    background-color: #d7e5e9;
+    color: #053d57;
+    font-size: 15px;
+}
+
+.p-component.p-button {
+    width: 150px; 
+    padding: 0;
+    border: none;
+    background-color: #006884;
+    color:#fbf9f9;
+}
+
+body .p-button:enabled:hover {
+    background-color:#053d57; 
+    color: #d7e5e9;
+    border-color: none; }
