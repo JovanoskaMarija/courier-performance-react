@@ -3,13 +3,10 @@ import styled from "styled-components";
 export const AppStyle = styled.div`
   display: flex;
   flex-direction: row;
-  /* justify-content: flex-end; */
   box-sizing: border-box;
-  /* background-color: #FBF9F9; */
   .wrapper {
     display: flex;
     align-self: flex-end;
-    /* margin-left: 15%; */
     flex-direction: column;
     height: 100%;
     width: 100%;

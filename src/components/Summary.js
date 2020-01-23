@@ -85,7 +85,6 @@ class Summary extends React.Component {
         this.coeff(this.props.listCouriersPerformance[i])
       );
     }
-    console.log(this.props.listCouriersPerformance);
 
     let maxNum = Math.max.apply(
       Math,
@@ -148,7 +147,6 @@ class Summary extends React.Component {
     }
     obj["arrayOfDates"] = arrayOfDates;
     obj["arrayOfRatios"] = arrayOfRatios;
-    console.log(obj);
     return obj;
   };
 

@@ -56,7 +56,6 @@ export const DetailsStyle = styled.div`
       color: #053d57;
       font-size: 15px;
       font-weight: 400;
-      /* font-style: oblique; */
     };
   }
     .data{

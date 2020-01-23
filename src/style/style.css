@@ -8,12 +8,10 @@ body .p-datatable .p-sortable-column.p-highlight {
 
 body .p-datatable .p-datatable-thead > tr > th {
   padding: 0.571em 0.857em;
-  /* border: 1px solid #006884; */
   border: 1px solid  #d7e5e9;
   font-weight: 700;
   color: #053d57;
   background-color: #d7e5e9;
-  /* text-align: center;  */
 }
 
 body .p-datatable .p-datatable-tbody > tr.p-highlight {
@@ -35,7 +33,6 @@ body .p-paginator {
   padding: 0;
 }
 body .p-paginator .p-paginator-pages .p-paginator-page {
-    /* background-color: #053d57; */
     color: #006884;
   }
 body .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {

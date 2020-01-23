@@ -59,7 +59,7 @@ class ReportPage extends React.Component {
         {
           method: "post",
           headers: {
-            Authorization: "Bearer b43361c03d09c05ffd50b6b66b1935b26f88cf33",
+            Authorization: "Bearer 00cb93b091f633b9dcf856c08dfa8f12209a80d2",
             Accept: "application/json",
             "Content-Type": "application/json"
           },
@@ -69,12 +69,10 @@ class ReportPage extends React.Component {
       this.setState({ loading: true });
       const json = await response.json();
       if (!Array.isArray(json)) {
-        // localListCouriersPerformance[singleCourier.courier_id] = json;
         localListCouriersPerformance.push(json);
       }
       this.setState({ listCouriersPerformance: localListCouriersPerformance });
     }
-    console.log(this.state.listCouriersPerformance);
     let localTotalDelParcels = [];
     for (let i = 0; i < this.props.couriersID.length; i++) {
       let x = this.totalDeliveredParcels(this.props.couriersID[i]);
@@ -87,7 +85,6 @@ class ReportPage extends React.Component {
       loading: false,
       sortedTotalDelParcels: localTotalDelParcels
     });
-    console.log(this.state.date_from, this.state.date_to);
     this.props.handleListTotalDelParcels(
       this.state.sortedTotalDelParcels,
       this.state.listCouriersPerformance
@@ -140,7 +137,6 @@ class ReportPage extends React.Component {
       date_from: convertedDate1,
       date_to: convertedDate2
     });
-    console.log("datum:", this.state.date_from);
     await this.listCouriersPerformance();
   };
 
@@ -231,7 +227,6 @@ class ReportPage extends React.Component {
                 }
                 paginator={true}
                 rows={20}
-                //  stateKey="tablestatedemo-local"
               >
                 {dynamicColumns}
               </DataTable>

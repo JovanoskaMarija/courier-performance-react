@@ -18,7 +18,7 @@ class Details extends React.Component {
     fetch("http://api-dev.els.mk/statistics/courierperformance", {
       method: "post",
       headers: {
-        Authorization: "Bearer b43361c03d09c05ffd50b6b66b1935b26f88cf33",
+        Authorization: "Bearer 00cb93b091f633b9dcf856c08dfa8f12209a80d2",
         Accept: "application/json",
         "Content-Type": "application/json"
       },
@@ -113,7 +113,6 @@ class Details extends React.Component {
       }
     });
 
-    console.log(singleSelectedCourier);
     return (
       <DetailsStyle>
         <p className="header">Summarize the information for the courier:</p>
@@ -149,25 +148,25 @@ class Details extends React.Component {
               <p>
                 Total cash amount from collected parcels:{" "}
                 <span className="data">
-                  {this.sum("cash_amount_from_collected_parcels").toFixed(2)} den
+                  {this.sum("cash_amount_from_collected_parcels").toFixed(2)} 
                 </span>{" "}
               </p>
               <p>
                 Total cash amount from delivered parcels:{" "}
                 <span className="data">
-                  {this.sum("cash_amount_from_delivered_parcels").toFixed(2)} den
+                  {this.sum("cash_amount_from_delivered_parcels").toFixed(2)} 
                 </span>{" "}
               </p>
               <p>
                 Total invoiced amount from collected parcels:{" "}
                 <span className="data">
-                  {this.sum("invoice_amount_from_collected_parcels").toFixed(2)} den
+                  {this.sum("invoice_amount_from_collected_parcels").toFixed(2)} 
                 </span>{" "}
               </p>
               <p>
                 Total invoiced amount from delivered parcels:{" "}
                 <span className="data">
-                  {this.sum("invoice_amount_from_delivered_parcels").toFixed(2)} den
+                  {this.sum("invoice_amount_from_delivered_parcels").toFixed(2)} 
                 </span>{" "}
               </p>
               <p>
@@ -176,7 +175,7 @@ class Details extends React.Component {
                   {(
                     this.sum("total_cash_amount") +
                     this.sum("total_invoice_amount") 
-                  ).toFixed(2)} den
+                  ).toFixed(2)} 
                 </span>
               </p>
             </div>
@@ -189,7 +188,6 @@ class Details extends React.Component {
           width="80%"
           height="40%"
         />
-
       </DetailsStyle>
     );
   }

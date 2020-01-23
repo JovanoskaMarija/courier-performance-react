@@ -7,7 +7,6 @@ export const DashboardStyle = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
 `;
-
 export const Card = styled.div`
   width: 350px;
   height: 150px;
@@ -19,7 +18,6 @@ export const Card = styled.div`
   justify-content: center;
   align-items: center;
   ${props => (props.disabled ? "opacity: 0.4" : "opacity: 1")};
-
   p {
     font-size: 25px;
     font-weight: bold;

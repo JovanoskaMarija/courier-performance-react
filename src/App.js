@@ -30,7 +30,7 @@ class App extends React.Component {
     fetch("http://api-dev.els.mk/employees?page=1&limit=500&roles[]=3", {
       method: "get",
       headers: {
-        Authorization: "Bearer b43361c03d09c05ffd50b6b66b1935b26f88cf33",
+        Authorization: "Bearer 00cb93b091f633b9dcf856c08dfa8f12209a80d2",
         Accept: "application/json",
         "Content-Type": "application/json"
       }

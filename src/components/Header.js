@@ -28,9 +28,8 @@ export const HeaderStyle = styled.div`
 const Header = () => {
   return (  
     <HeaderStyle>
-      <Link to="/">
-        {" "}
-        <p>Brza Poshta</p>{" "}
+      <Link to="/"> 
+        <p>Brza Poshta</p>
       </Link>
     </HeaderStyle>
   );
